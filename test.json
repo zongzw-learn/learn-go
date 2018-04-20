@@ -1,0 +1,9 @@
+{
+    "message": 1,
+    "skip_ssl_validation": true,
+    "vCenter": "https://172.16.11.6",
+    "data": {
+        "username": "zongzw",
+        "password": "badguy"
+    }
+}

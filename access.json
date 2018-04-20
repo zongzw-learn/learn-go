@@ -1,0 +1,26 @@
+{
+	"authorization": [
+		{"apikey": "q0IMVSOHDoKYEauQwjyScG4PJQL2_jySgeS8ZkjsFcpx", "role": "super", "service": "*", "tags": []},
+		{"apikey": "q0IMVSOHDoKYEauQwjyScG4PJQL2_jySgeS8ZkjsFcpx", "role": "admin", "service": "Cloudant", "tags": []},
+		{"apikey": "Cly-OhJSXWgug5mdij2xcvVdT6Tcz7U9SKBD7ps4Bve1", "role": "operator", "service": "Compose", "tags": ["temporary"]},
+		{"apikey": "_lu1ChJDkeZZEaLcHCIDh77XQhSzlSW6jfdc5cOz-fnW", "role": "reader", "service": "Cloudant", "tags": []},
+		{"apikey": "YcWnsu1eGIzXbdWvmw7i1FYRIBbzPIQvKcz53eRLQsvJ", "role": "admin", "service": "Waston", "tags": []},
+		{"apikey": "vcx7S45kGGHI9_1voJsk6B-09uDGAi_XxHNMcKcuvkHm", "role": "operator", "service": "Postgres", "tags": []}
+	],
+	"roleops": [
+		{ "role": "super", "allowedapis": [
+				"/access", "/login"]},
+		{ "role": "admin", "allowedapis": [
+			"/login", "/createmb", "/deletemb/:magicboxID", "/createsharedmb", 
+			"/enableselfhealing", "/getmbstatus/:magicboxID", "/getmbs/:service", 
+			"/getmbstatus", "/admin", "/mbs", "/login", "/create/:id|POST", "/zongzhaowei"]},
+		{"role": "operator", "allowedapis": [
+			"/login", "/createmb", "/deletemb/:magicboxID", 
+			"/createsharedmb", "/enableselfhealing", "/getmbstatus/:magicboxID", 
+			"/getmbs/:service", "/getmbstatus"]},
+		{"role": "reader", "allowedapis": [
+			"/login", "/getmbstatus/:magicboxID", "/getmbstatus/:magicboxID", 
+			"/getmbs/:service", "/getmbstatus"]}
+	]
+}
+
