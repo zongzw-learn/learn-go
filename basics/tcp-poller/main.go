@@ -3,13 +3,18 @@ package main
 import (
 	"context"
 	"log"
+	"os"
 	"syscall"
 )
 
 func main() {
+	if len(os.Args) != 3 {
+		log.Fatalf("%s <ip/domain> <port>", os.Args[0])
+	}
+
 	var np NetPoller
 	var err error
-	if np, err = NewKqueuePoller("0.0.0.0", "8082"); err != nil {
+	if np, err = NewKqueuePoller(os.Args[1], os.Args[2]); err != nil {
 		log.Fatal(err)
 	}
 

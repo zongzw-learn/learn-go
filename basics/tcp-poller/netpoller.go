@@ -11,21 +11,6 @@ import (
 	"unsafe"
 )
 
-type Handler func(*ClientSocket, []byte) error
-
-type NetPoller interface {
-	Close()
-	Start(ctx context.Context) error
-	SetHandler(filter int, handler Handler)
-}
-
-type KqueuePoller struct {
-	kq       int
-	socket   int
-	events   []syscall.Kevent_t
-	handlers map[int]Handler
-}
-
 func NewKqueuePoller(host, port string) (NetPoller, error) {
 	np := KqueuePoller{}
 	np.handlers = map[int]Handler{}

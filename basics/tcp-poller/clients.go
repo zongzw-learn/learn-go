@@ -9,14 +9,8 @@ import (
 	"syscall"
 )
 
-type ClientSocket struct {
-	Fd       int
-	SockAddr syscall.Sockaddr
-	// additional data required in future..
-}
-
 func handleRead1(cs *ClientSocket, data []byte) error {
-	log.Printf("read from client: %d, %s\n", len(data), strings.Trim(string(data), "\n"))
+	log.Printf("read from client %d: %d, %s\n", cs.Fd, len(data), strings.Trim(string(data), "\n"))
 	return nil
 }
 
