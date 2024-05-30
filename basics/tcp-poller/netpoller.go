@@ -170,6 +170,7 @@ func (np *KqueuePoller) readFd(fd int) ([]byte, error) {
 			if err == syscall.EAGAIN {
 				break
 			} else if err == syscall.EINTR {
+				// 读取socket过程中碰到interrupted system call，直接跳转下一次for loop
 				log.Printf("interrupted while reading")
 			} else {
 				return nil, err

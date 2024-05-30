@@ -6,19 +6,20 @@ import (
 	"unsafe"
 )
 
-// type INT int
-// type A struct {
-// 	M int
-// }
+type INT int
+type A struct {
+	M int
+}
 
-// type B struct {
-// 	M INT
-// }
+type B struct {
+	M INT
+}
 
 type C struct {
 	M int
 }
 
+// 动态给某对象实现一个接口
 type Interface interface {
 	DoSomething()
 }
@@ -66,8 +67,8 @@ func main() {
 	// t := reflect.TypeOf(C{})
 	// fmt.Printf("t: %v\n", t)
 	// // x := t(a)
-	// x := DynamicImplementor(&C{M: 10})
-	// x.DoSomething()
+	x := DynamicImplementor(&C{M: 10})
+	x.DoSomething()
 
 	t := Tunnel{
 		data: (*byte)(unsafe.Pointer(&ToTransfer{Fd: 1, S: "2"})),
