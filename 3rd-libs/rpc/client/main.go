@@ -23,9 +23,21 @@ func main() {
 
 	quotient := new(rpctest.Quotient)
 	divCall := client.Go("Arith.Divide", args, quotient, nil)
-	if replyCall := <-divCall.Done; replyCall != nil { // will be equal to divCall
-		log.Printf("returned: %v", quotient)
-		// check errors, print, etc.
+	<-divCall.Done // will be equal to divCall
+	log.Printf("returned: %v", quotient)
+	// check errors, print, etc.
+
+	c := 0
+	countCall := client.Go("Arith.Count", args, &c, nil)
+	if countReply := <-countCall.Done; countReply.Error != nil {
+		log.Println(countReply.Error.Error())
+	} else {
+		log.Printf("called %d", c)
 	}
 
+	err = client.Call("Arith.Count", args, &reply)
+	if err != nil {
+		log.Fatal("arith error:", err)
+	}
+	log.Printf("called %d times", reply)
 }
