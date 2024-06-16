@@ -6,18 +6,25 @@ import (
 	"net"
 	"net/http"
 	"net/rpc"
-	"rpctest"
 )
 
 type Arith int
 
-func (t *Arith) Multiply(args *rpctest.Args, reply *int) error {
+type Args struct {
+	A, B int
+}
+
+type Quotient struct {
+	Quo, Rem int
+}
+
+func (t *Arith) Multiply(args *Args, reply *int) error {
 	log.Printf("multiply is called: %p", t)
 	defer func() { *t++ }()
 	*reply = args.A * args.B
 	return nil
 }
-func (t *Arith) Divide(args *rpctest.Args, quo *rpctest.Quotient) error {
+func (t *Arith) Divide(args *Args, quo *Quotient) error {
 	log.Printf("divide is called: %p", t)
 	defer func() { *t++ }()
 	if args.B == 0 {
@@ -28,7 +35,7 @@ func (t *Arith) Divide(args *rpctest.Args, quo *rpctest.Quotient) error {
 	return nil
 }
 
-func (t *Arith) Count(args *rpctest.Args, r *int) error {
+func (t *Arith) Count(args *Args, r *int) error {
 	log.Printf("count is called: %p", t)
 	log.Printf("count is: %d", *t)
 	*r = int(*t)
