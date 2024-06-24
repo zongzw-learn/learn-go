@@ -37,8 +37,8 @@ func main() {
 				log.Fatal(ev.Err)
 			case app.FrameEvent:
 				gtx := app.NewContext(&ops, ev)
-				log.Printf("max %v", gtx.Constraints.Max)
-				log.Printf("min %v", gtx.Constraints.Min)
+				// log.Printf("max %v", gtx.Constraints.Max)
+				// log.Printf("min %v", gtx.Constraints.Min)
 				size = gtx.Constraints.Max
 				// drawRedRect(gtx)
 				drawRects(gtx)
