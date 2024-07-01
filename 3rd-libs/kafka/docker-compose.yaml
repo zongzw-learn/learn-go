@@ -1,0 +1,11 @@
+
+# docker run -p 9092:9092 apache/kafka:3.7.0
+# docker-compose up -d --remove-orphans --force-recreate
+# docker-compose down
+# docker logs -f kafka-kafka-1
+version: "3"
+services:
+  kafka:
+    image: apache/kafka:3.7.0
+    ports:
+      - 9092:9092
