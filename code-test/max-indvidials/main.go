@@ -4,8 +4,9 @@ import "log"
 
 func main() {
 	a := []int{2, 3, 5, 4, 1, 4} // 0 2 5
-	x, y := maxab(a, 0)
-	log.Printf("max: %d, %v", x, y)
+	// x, y := maxab(a, 0)
+	// log.Printf("max: %d, %v", x, y)
+	maxb(a)
 }
 
 func maxa(a []int) int {
@@ -45,4 +46,38 @@ func maxab(a []int, o int) (int, []int) {
 	} else {
 		return x2, y2
 	}
+}
+
+// func maxb(a []int) {
+// 	b := make([]int, len(a))
+// 	for i := range a {
+// 		if i == 0 {
+// 			b[i] = a[i]
+// 		} else if i == 1 {
+// 			b[i] = max(a[0], a[1])
+// 		} else {
+// 			b1 := a[i] + b[i-2]
+// 			b2 := b[i-1]
+// 			b[i] = max(b1, b2)
+// 		}
+// 	}
+
+// 	log.Printf("b: %v", b)
+// }
+
+func maxb(a []int) {
+	b := make([]int, len(a))
+	for i := range a {
+		if i == 0 {
+			b[i] = a[i]
+		} else if i == 1 {
+			b[i] = max(a[0], a[1])
+		} else {
+			b1 := a[i] + b[i-2]
+			b2 := b[i-1]
+			b[i] = max(b1, b2)
+		}
+	}
+
+	log.Printf("b: %v", b)
 }
