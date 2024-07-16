@@ -66,16 +66,21 @@ func maxab(a []int, o int) (int, []int) {
 // }
 
 func maxb(a []int) {
-	b := make([]int, len(a))
+	// b := make([]int, len(a))
+	b0, b1 := 0, 0
+	b := 0
 	for i := range a {
 		if i == 0 {
-			b[i] = a[i]
+			b0 = a[i]
+			b = b0
 		} else if i == 1 {
-			b[i] = max(a[0], a[1])
+			b1 = max(a[0], a[1])
+			b = b1
 		} else {
-			b1 := a[i] + b[i-2]
-			b2 := b[i-1]
-			b[i] = max(b1, b2)
+			bx := b1
+			b1 = a[i] + b0
+			b0 = bx
+			b = max(b0, b1)
 		}
 	}
 
