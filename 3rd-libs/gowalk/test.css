@@ -1,0 +1,27 @@
+.icon-path {
+    animation: icon-path-animation 8s ease-in infinite;
+ }
+ @keyframes icon-path-animation {
+   0% {
+     stroke-dasharray: 4917;
+     stroke-dashoffset: 4917;
+   }
+ 
+   40% {
+     stroke-dasharray: 4917;
+     stroke-dashoffset: 0;
+     fill: #fff;
+   }
+ 
+   60% {
+     stroke-dasharray: 4917;
+     stroke-dashoffset: 0;
+     fill: #1875F0;
+   }
+ 
+   100% {
+     stroke-dasharray: 4917;
+     stroke-dashoffset: 0;
+     fill: #1875F0;
+   }
+ }
